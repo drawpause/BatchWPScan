@@ -22,3 +22,6 @@ numberOfErrors = scan.getErrorCount(result)
 
 if numberOfErrors > 0:
     print(str(numberOfErrors) + ' vulnerabilities detected')
+
+scan.sendReportMail('henri.kuittinen@icloud.com', result)
+
