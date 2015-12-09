@@ -3,17 +3,26 @@ import smtplib
 from email.mime.text import MIMEText
 
 class BatchWPScanner:
-    '''
-    Constructor
-    '''
+    """
+    A helper class for BatchWPScan
+    """
+
     def __init__(self, url, execLocation):
+        """
+        Constructor
+        :type url: string
+        :type execLocation: string
+        :return:
+        """
         self.url = url
         self.execLocation = execLocation
 
-    '''
-    Do the actual scan
-    '''
+
     def getResult(self):
+        """
+        Do the actual scan
+        :return: string
+        """
         proc = subprocess.Popen(
             ['ruby', self.execLocation],
             stdout=subprocess.PIPE
@@ -21,17 +30,24 @@ class BatchWPScanner:
         result = proc.communicate()[0]
         return(result)
 
-    '''
-    How many errors (exclamation marks)
-    '''
     def getErrorCount(self, result):
+        """
+        Count the errors in the scan (exclamation marks)
+        :param result:
+        :return: int
+        """
         result = str(result)
         return (result.count('[!]'))
 
-    '''
-    Send the report
-    '''
     def sendReportMail(self, to_mail, from_mail, body, subject='Scan results'):
+        """
+        Send the report via email
+        :param to_mail: Receiver address
+        :param from_mail: Sender address
+        :param body: Scanner output text
+        :param subject: Subject line
+        :return:
+        """
         msg = MIMEText(body, 'plain', 'UTF-8')
         msg['Subject'] = 'report'
         s = smtplib.SMTP('localhost')
