@@ -1,0 +1,6 @@
+{
+  "execLocation":"/location/to/the/wpscan.rb",
+  "to_mail": "example@example.com",
+  "from_mail": "noreply@localhost.localdomain",
+  "subject": "Scan results"
+}

@@ -8,6 +8,9 @@ Load configuration files
 with open('configuration.json') as configurationFile:
     configuration = json.load(configurationFile)
 
+to_mail = configuration['to_mail']
+from_mail = configuration['from_mail']
+
 with open('urls.json') as urlsFile:
     urls = json.load(urlsFile)['urls']
 
@@ -23,5 +26,7 @@ numberOfErrors = scan.getErrorCount(result)
 if numberOfErrors > 0:
     print(str(numberOfErrors) + ' vulnerabilities detected')
 
-scan.sendReportMail('henri.kuittinen@icloud.com', result)
+scan.sendReportMail(to_mail, from_mail, result)
+
+
 

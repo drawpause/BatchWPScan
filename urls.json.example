@@ -1,6 +1,6 @@
 {
   "urls": [
     "localhost",
-    "10.0.1.43:8384"
+    "some.other.host"
   ]
 }
