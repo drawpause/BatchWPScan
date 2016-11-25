@@ -14,10 +14,6 @@ from_mail = configuration['from_mail']
 with open('urls.json') as urlsFile:
     urls = json.load(urlsFile)['urls']
 
-# Just a loop test
-for url in urls:
-    pprint(url)
-
 # @todo the actual scan and queue
 for url in urls:
     pprint('Scanning: ' + url)
@@ -27,7 +23,7 @@ for url in urls:
 
     if numberOfErrors > 0:
         print(str(numberOfErrors) + ' vulnerabilities detected')
-    scan.sendReportMail(to_mail, from_mail, result)
+    scan.sendReportMail(to_mail, from_mail, result, 'Vulnerabilities detected on ' + url)
 
 
 

@@ -48,7 +48,7 @@ class BatchWPScanner:
         :return:
         """
         msg = MIMEText(body, 'plain', 'UTF-8')
-        msg['Subject'] = 'report'
+        msg['Subject'] = subject
         s = smtplib.SMTP('localhost')
         s.sendmail(from_mail, to_mail, msg.as_string())
         s.quit()
