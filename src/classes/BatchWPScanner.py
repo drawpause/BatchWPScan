@@ -7,7 +7,7 @@ class BatchWPScanner:
     A helper class for BatchWPScan
     """
 
-    def __init__(self, url, execLocation):
+    def __init__(self, url):
         """
         Constructor
         :type url: string
@@ -15,7 +15,6 @@ class BatchWPScanner:
         :return:
         """
         self.url = url
-        self.execLocation = execLocation
 
 
     def getResult(self):
@@ -24,8 +23,7 @@ class BatchWPScanner:
         :return: string
         """
         proc = subprocess.Popen(
-            ['ruby', self.execLocation],
-            stdout=subprocess.PIPE
+            ['docker', 'run', '--rm', 'wpscanteam/wpscan', '--update', '-u', self.url, '--enumerate', 'vt,vp,u']
         )
         result = proc.communicate()[0]
         return(result)

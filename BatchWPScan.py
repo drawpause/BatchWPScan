@@ -19,14 +19,15 @@ for url in urls:
     pprint(url)
 
 # @todo the actual scan and queue
-scan = BatchWPScanner('localhost', configuration['execLocation'])
-result = scan.getResult()
-numberOfErrors = scan.getErrorCount(result)
+for url in urls:
+    pprint('Scanning: ' + url)
+    scan = BatchWPScanner(url)
+    result = scan.getResult()
+    numberOfErrors = scan.getErrorCount(result)
 
-if numberOfErrors > 0:
-    print(str(numberOfErrors) + ' vulnerabilities detected')
-
-scan.sendReportMail(to_mail, from_mail, result)
+    if numberOfErrors > 0:
+        print(str(numberOfErrors) + ' vulnerabilities detected')
+#    scan.sendReportMail(to_mail, from_mail, result)
 
 
 
