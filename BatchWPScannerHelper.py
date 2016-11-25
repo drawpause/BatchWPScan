@@ -2,7 +2,7 @@ import subprocess
 import smtplib
 from email.mime.text import MIMEText
 
-class BatchWPScanner:
+class BatchWPScannerHelper:
     """
     A helper class for BatchWPScan
     """

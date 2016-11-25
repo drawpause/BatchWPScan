@@ -1,6 +1,6 @@
 import json
 from pprint import pprint
-from src.classes.BatchWPScanner import BatchWPScanner
+from BatchWPScannerHelper import BatchWPScannerHelper
 
 # Load configuration files from configuration.json
 with open('configuration.json') as configurationFile:
@@ -14,10 +14,10 @@ from_mail = configuration['from_mail']
 with open('urls.json') as urlsFile:
     urls = json.load(urlsFile)['urls']
 
-# @todo the actual scan and queue
+# Loop through urls and send a simple email if vulns are detected
 for url in urls:
     pprint('Scanning: ' + url)
-    scan = BatchWPScanner(url)
+    scan = BatchWPScannerHelper(url)
     result = scan.getResult()
     numberOfErrors = scan.getErrorCount(result)
 
