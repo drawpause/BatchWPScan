@@ -27,7 +27,7 @@ for url in urls:
 
     if numberOfErrors > 0:
         print(str(numberOfErrors) + ' vulnerabilities detected')
-#    scan.sendReportMail(to_mail, from_mail, result)
+    scan.sendReportMail(to_mail, from_mail, result)
 
 
 

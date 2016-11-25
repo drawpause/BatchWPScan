@@ -23,7 +23,8 @@ class BatchWPScanner:
         :return: string
         """
         proc = subprocess.Popen(
-            ['docker', 'run', '--rm', 'wpscanteam/wpscan', '--update', '-u', self.url, '--enumerate', 'vt,vp,u']
+            ['docker', 'run', '--rm', 'wpscanteam/wpscan', '--update', '-u', self.url, '--enumerate', 'vt,vp,u'],
+            stdout=subprocess.PIPE
         )
         result = proc.communicate()[0]
         return(result)
